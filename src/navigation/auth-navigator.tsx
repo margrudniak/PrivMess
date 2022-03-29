@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { ParamList } from "./screen-params";
+import { ParamList, Screens } from "./screen-params";
+import { WelcomeScreen } from "src/screens/auth";
 
 export const AuthNavigator = () => {
   const Stack = createStackNavigator<ParamList>();
@@ -12,7 +13,7 @@ export const AuthNavigator = () => {
         headerShown: false,
       }}
     >
-      {/* <Stack.Screen name={Screens.Splash} component={SplashScreen} /> */}
+      <Stack.Screen name={Screens.Welcome} component={WelcomeScreen} />
     </Stack.Navigator>
   );
 };

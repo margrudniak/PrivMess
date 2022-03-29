@@ -1,6 +1,7 @@
-export enum Screens {}
-// Splash = 'splash',
+export enum Screens {
+  Welcome = "welcome",
+}
 
 export type ParamList = {
-  // [Screens.Splash]: undefined
+  [Screens.Welcome]: undefined;
 };
