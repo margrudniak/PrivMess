@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
-import { Style } from "./TextInput.types";
+
+interface Style {}
 
 const styles = StyleSheet.create<Style>({});
 
