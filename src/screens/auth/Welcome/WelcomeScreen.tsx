@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./WelcomeScreen.style";
+import { TextInput } from "src/components";
 import { WelcomeScreenProps } from "./WelcomeScreen.types";
 
 export const WelcomeScreen = ({}: WelcomeScreenProps) => {
-  return null;
+  return <TextInput />;
 };
