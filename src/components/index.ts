@@ -4,3 +4,5 @@ export * from "./TextInput/TextInput";
 export * from "./TextInput/TextInput.types";
 export * from "./Button/Button";
 export * from "./Button/Button.types";
+export * from "./Text/Text";
+export * from "./Text/Text.types";
