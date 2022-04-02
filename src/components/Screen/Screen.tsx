@@ -12,7 +12,7 @@ import {
 
 const BareScreen = ({ ...props }: BareScreenProps) => {
   return (
-    <View style={[props.style, props.insetStyle]} {...props}>
+    <View {...props} style={[props.insetStyle, props.style]}>
       {props.children}
     </View>
   );
@@ -25,7 +25,6 @@ const KeyboardAwareScrollScreen = ({
 };
 
 const KeyboardAwareScreen = ({ ...props }: KeyboardAwareScreenProps) => {
-  console.log("KeyboardAwareScreen invoked", props);
   return (
     <KeyboardAvoidingView
       behavior={isIos ? "padding" : "height"}
