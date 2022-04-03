@@ -1,49 +1,9 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import enTranslation from "./en.json";
-import plTranslation from "./pl.json";
-// import LanguageDetector from 'i18next-browser-languagedetector';
+import * as Localization from "expo-localization";
+import i18n from "i18n-js";
+import en from "./en.json";
+import pl from "./pl.json";
 
-i18n
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
-  //   .use(LanguageDetector)
-  // pass the i18n instance to react-i18next.
-  .use(initReactI18next)
-  // init i18next
-  // for all options read: https://www.i18next.com/overview/configuration-options
-  .init({
-    debug: true,
-    fallbackLng: "en",
-    interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
-    },
-    resources: {
-      en: {
-        // translation: {
-        //   enTranslation,
-        // },
-        translation: {
-          common: {
-            ok: "OK!",
-            cancel: "Cancel",
-            back: "Back",
-          },
-        },
-      },
-      de: {
-        // translation: {
-        //   plTranslation,
-        // },
-        translation: {
-          common: {
-            ok: "OK!",
-            cancel: "Anuluj",
-            back: "Confnij",
-          },
-        },
-      },
-    },
-  });
+i18n.fallbacks = true;
+i18n.translations = { en, pl };
 
-export default i18n;
+i18n.locale = Localization.locale || "en";
