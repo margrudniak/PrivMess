@@ -15,6 +15,7 @@ module.exports = function (api) {
           alias: {
             assets: "./assets",
             src: "./src",
+            i18n: "./i18n",
           },
         },
       ],
