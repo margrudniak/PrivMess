@@ -1,7 +1,7 @@
-import { Scope } from "i18n-js";
+import { TextProps as ReactNativeTextProps } from "react-native";
 
-export interface TestProps {
+export interface TextProps extends ReactNativeTextProps {
   notTranslated?: boolean;
   children?: React.ReactNode;
-  text: Scope;
+  text?: string | string[];
 }
