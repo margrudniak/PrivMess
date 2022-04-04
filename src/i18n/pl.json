@@ -3,5 +3,9 @@
     "ok": "OK!",
     "cancel": "Anuluj",
     "back": "Confnij"
+  },
+  "auth": {
+    "signIn": "Zalogj",
+    "signUp": "Zarejestruj"
   }
 }
