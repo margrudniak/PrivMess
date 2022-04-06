@@ -8,12 +8,16 @@ export const Text = ({
   notTranslated,
   children,
   text = "",
+  textCategory,
+  style,
   ...props
 }: TextProps) => {
   const content = notTranslated ? text : i18n.t(text);
 
+  const textStyle = styles[textCategory] || styles.default;
+
   return (
-    <ReactNativeText {...props} style={styles}>
+    <ReactNativeText {...props} style={[textStyle, style]}>
       {content}
     </ReactNativeText>
   );
