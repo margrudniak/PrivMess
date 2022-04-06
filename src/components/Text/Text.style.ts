@@ -1,7 +1,20 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextStyle } from "react-native";
+import { color, typography } from "src/themes";
 
-interface Style {}
+const base: TextStyle = {
+  fontFamily: typography.primary,
+  color: color.text,
+  fontSize: 17,
+};
 
-const styles = StyleSheet.create<Style>({});
+interface Style {
+  default: TextStyle;
+}
+
+const styles = StyleSheet.create<Style>({
+  default: base,
+});
+
+export type TextStyleProps = keyof typeof styles;
 
 export default styles;
