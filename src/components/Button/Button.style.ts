@@ -1,31 +1,31 @@
 import { StyleSheet, ViewStyle } from "react-native";
-import { spacing } from "src/themes";
+import { color, spacing } from "src/themes";
 
 interface Style {
-  container: ViewStyle;
+  primary: ViewStyle;
+  secondary: ViewStyle;
 }
 
 const baseView: ViewStyle = {
+  borderRadius: 60,
   paddingVertical: spacing[2],
   paddingHorizontal: spacing[2],
-  borderRadius: 4,
   justifyContent: "center",
   alignItems: "center",
+  alignSelf: "center",
 };
 
 const styles = StyleSheet.create<Style>({
-  container: {
-    alignSelf: "center",
-    backgroundColor: "white",
-    padding: 10,
-    borderRadius: 60,
-    // flex: 1,
-    // height: 30,
-    // width: 30,
+  primary: {
+    ...baseView,
+    backgroundColor: color.primary,
+  },
+  secondary: {
+    ...baseView,
+    backgroundColor: color.secondary,
   },
 });
 
-// A list of preset names.
-export type ButtonPresetNames = keyof typeof styles;
+export type ButtonViewProps = keyof typeof styles;
 
 export default styles;

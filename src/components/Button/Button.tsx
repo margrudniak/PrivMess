@@ -7,16 +7,19 @@ import styles from "./Button.style";
 export const Button = ({
   children,
   text,
+  category,
   style,
   notTranslated,
   ...props
 }: ButtonProps) => {
+  const viewStyle = styles[category] || styles["primary"];
+
   const content = children || (
     <Text numberOfLines={1} {...{ notTranslated, text }} />
   );
 
   return (
-    <TouchableOpacity style={[styles.container, style]} {...props}>
+    <TouchableOpacity style={[viewStyle, style]} {...props}>
       {content}
     </TouchableOpacity>
   );
