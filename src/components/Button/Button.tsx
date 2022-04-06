@@ -10,12 +10,13 @@ export const Button = ({
   category,
   style,
   notTranslated,
+  textCategory = "default",
   ...props
 }: ButtonProps) => {
   const viewStyle = styles[category] || styles["primary"];
 
   const content = children || (
-    <Text numberOfLines={1} {...{ notTranslated, text }} />
+    <Text numberOfLines={1} {...{ notTranslated, textCategory, text }} />
   );
 
   return (
