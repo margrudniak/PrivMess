@@ -6,5 +6,7 @@ export const color = {
   background: palette.tundora,
   primary: palette.portica,
   secondary: palette.jordyBlue,
+  tertiary: palette.tundora,
+  tertiaryDarker: palette.mineShaft,
   text: palette.black,
 };
