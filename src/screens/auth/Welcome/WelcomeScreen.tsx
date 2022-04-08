@@ -4,8 +4,12 @@ import { Text, Screen, Button } from "src/components";
 import { WelcomeScreenProps } from "./WelcomeScreen.types";
 import styles from "./WelcomeScreen.style";
 import { color } from "src/themes";
+import { Screens } from "src/navigation";
 
-export const WelcomeScreen = ({}: WelcomeScreenProps) => {
+export const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
+  const onClickLogin = () => navigation.navigate(Screens.SignUp);
+  const onClickRegister = () => navigation.navigate(Screens.SignIn);
+
   return (
     <>
       <LinearGradient
@@ -23,13 +27,13 @@ export const WelcomeScreen = ({}: WelcomeScreenProps) => {
           category="primary"
           textCategory="h3"
           text={"auth.logIn"}
-          onPress={() => console.log("test")}
+          onPress={onClickLogin}
         />
         <Button
           category="secondary"
           textCategory="h3"
           text={"auth.createNewAccount"}
-          onPress={() => console.log("test")}
+          onPress={onClickRegister}
         />
       </Screen>
     </>
