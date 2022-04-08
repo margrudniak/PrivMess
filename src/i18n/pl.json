@@ -5,7 +5,7 @@
     "back": "Confnij"
   },
   "auth": {
-    "signIn": "Zaloguj",
-    "signUp": "Zarejestruj"
+    "logIn": "Zaloguj się",
+    "createNewAccount": "Utwórz nowe konto"
   }
 }
