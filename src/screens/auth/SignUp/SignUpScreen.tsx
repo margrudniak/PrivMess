@@ -13,7 +13,7 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
         colors={[color.tertiary, color.tertiaryDarker]}
         style={styles.linearBackground}
       />
-      <Screen style={{ flex: 1, borderWidth: 1, borderColor: "red" }}>
+      <Screen style={styles.mainWrapper}>
         <Header left="back" onPressLeft={onPressBack} />
       </Screen>
     </>
