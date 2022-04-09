@@ -16,13 +16,7 @@ export const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
         colors={[color.tertiary, color.tertiaryDarker]}
         style={styles.linearBackground}
       />
-      <Screen
-        style={{
-          flex: 1,
-          justifyContent: "space-evenly",
-          alignItems: "center",
-        }}
-      >
+      <Screen style={styles.mainWrapper}>
         <Button
           category="primary"
           textCategory="h3"
