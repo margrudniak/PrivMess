@@ -11,3 +11,5 @@ export const color = {
   text: palette.black,
   icon: palette.white,
 };
+
+export type ColorTypes = keyof typeof color;

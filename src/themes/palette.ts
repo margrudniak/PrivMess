@@ -6,3 +6,5 @@ export const palette = {
   tundora: "#404040",
   mineShaft: "#202020",
 };
+
+export type PaletteTypes = keyof typeof palette;
