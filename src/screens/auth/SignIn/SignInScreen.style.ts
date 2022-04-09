@@ -2,6 +2,7 @@ import { StyleSheet, ViewStyle } from "react-native";
 
 interface Style {
   linearBackground: ViewStyle;
+  mainWrapper: ViewStyle;
 }
 
 const styles = StyleSheet.create<Style>({
@@ -11,6 +12,9 @@ const styles = StyleSheet.create<Style>({
     right: 0,
     top: 0,
     bottom: 0,
+  },
+  mainWrapper: {
+    flex: 1,
   },
 });
 
