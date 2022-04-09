@@ -1,7 +1,7 @@
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { color } from "src/themes";
-import { Screen, Header } from "src/components";
+import { Screen, Header, TextInput } from "src/components";
 import { SignInScreenProps } from "./SignInScreen.types";
 import styles from "./SignInScreen.style";
 
@@ -15,6 +15,8 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
       />
       <Screen style={styles.mainWrapper}>
         <Header left="back" onPressLeft={onPressBack} />
+        <TextInput notTranslated label="E-mail" />
+        <TextInput label="form.password" />
       </Screen>
     </>
   );
