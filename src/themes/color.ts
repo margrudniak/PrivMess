@@ -9,4 +9,5 @@ export const color = {
   tertiary: palette.tundora,
   tertiaryDarker: palette.mineShaft,
   text: palette.black,
+  icon: palette.white,
 };
