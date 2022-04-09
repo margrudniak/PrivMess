@@ -1,4 +1,5 @@
 import { TextProps as ReactNativeTextProps } from "react-native";
+import { PaletteTypes } from "src/themes";
 import { TextStyleProps } from "./Text.style";
 
 export interface TextProps extends ReactNativeTextProps {
@@ -6,4 +7,5 @@ export interface TextProps extends ReactNativeTextProps {
   children?: React.ReactNode;
   text?: string | string[];
   textCategory: TextStyleProps;
+  color?: PaletteTypes;
 }

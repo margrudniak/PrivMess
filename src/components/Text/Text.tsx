@@ -9,15 +9,20 @@ export const Text = ({
   children,
   text = "",
   textCategory,
+  color,
   style,
   ...props
 }: TextProps) => {
   const content = notTranslated ? text : i18n.t(text);
 
+  const textColor = color ? { color } : {};
+
   const textStyle = styles[textCategory] || styles.default;
 
+  const concatanedStyle = [textStyle, textColor, style];
+
   return (
-    <ReactNativeText {...props} style={[textStyle, style]}>
+    <ReactNativeText {...props} style={concatanedStyle}>
       {content}
     </ReactNativeText>
   );
