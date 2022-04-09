@@ -9,6 +9,7 @@
     "createNewAccount": "Create New Account"
   },
   "form": {
-    "password": "Passwrord"
+    "password": "Password",
+    "register": "Register"
   }
 }

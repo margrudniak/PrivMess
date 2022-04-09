@@ -9,6 +9,7 @@
     "createNewAccount": "Utwórz nowe konto"
   },
   "form": {
-    "password": "Hasło"
+    "password": "Hasło",
+    "register": "Zarejestruj się"
   }
 }
