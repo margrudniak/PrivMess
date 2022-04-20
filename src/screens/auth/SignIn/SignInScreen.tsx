@@ -4,14 +4,21 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useForm } from "react-hook-form";
 import { color } from "src/themes";
 import { Screen, Header, TextInput, Button } from "src/components";
-import { SignInScreenProps } from "./SignInScreen.types";
+import { SignInInputsType, SignInScreenProps } from "./SignInScreen.types";
 import styles from "./SignInScreen.style";
 
 export const SignInScreen = ({ navigation }: SignInScreenProps) => {
-  const { control, handleSubmit } = useForm();
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInInputsType>();
 
   const onPressBack = () => navigation.goBack();
-  const onSubmit = (data) => Alert.alert(JSON.stringify(data));
+  const onSubmit = (data) => {
+    console.log("done");
+  };
 
   return (
     <>
@@ -21,8 +28,17 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
       />
       <Screen style={styles.mainWrapper}>
         <Header left="back" onPressLeft={onPressBack} />
-        <TextInput notTranslated label="E-mail" {...{ control }} />
-        <TextInput label="form.password" {...{ control }} />
+        <TextInput
+          notTranslated
+          label="E-mail"
+          {...register("email", { required: true })}
+          {...{ control, errors }}
+        />
+        <TextInput
+          label="form.password"
+          {...register("password", { required: true })}
+          {...{ control, errors }}
+        />
         <Button
           category="secondary"
           textCategory="h3"
