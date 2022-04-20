@@ -11,5 +11,8 @@
   "form": {
     "password": "Hasło",
     "register": "Zarejestruj się"
+  },
+  "form_validation": {
+    "required": "To pole jest wymagane"
   }
 }
