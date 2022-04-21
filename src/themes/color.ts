@@ -8,8 +8,9 @@ export const color = {
   secondary: palette.jordyBlue,
   tertiary: palette.tundora,
   tertiaryDarker: palette.mineShaft,
-  text: palette.black,
+  text: palette.white,
   icon: palette.white,
+  error: palette.mandy,
 };
 
 export type ColorTypes = keyof typeof color;
