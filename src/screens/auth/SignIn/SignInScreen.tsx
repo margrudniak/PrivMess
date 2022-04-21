@@ -8,16 +8,20 @@ import { SignInInputsType, SignInScreenProps } from "./SignInScreen.types";
 import styles from "./SignInScreen.style";
 
 export const SignInScreen = ({ navigation }: SignInScreenProps) => {
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SignInInputsType>();
+  const { control, handleSubmit } = useForm<SignInInputsType>();
 
   const onPressBack = () => navigation.goBack();
   const onSubmit = (data) => {
     console.log("done");
+  };
+
+  const rules = {
+    email: {
+      required: true,
+    },
+    password: {
+      required: true,
+    },
   };
 
   return (
@@ -31,13 +35,15 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
         <TextInput
           notTranslated
           label="E-mail"
-          {...register("email", { required: true })}
-          {...{ control, errors }}
+          inputType="email"
+          rules={rules.email}
+          {...{ control }}
         />
         <TextInput
           label="form.password"
-          {...register("password", { required: true })}
-          {...{ control, errors }}
+          inputType="password"
+          rules={rules.password}
+          {...{ control }}
         />
         <Button
           category="secondary"
