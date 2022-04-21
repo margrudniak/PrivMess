@@ -5,6 +5,7 @@ export const palette = {
   portica: "#F2F261",
   tundora: "#404040",
   mineShaft: "#202020",
+  mandy: "#E65151",
 };
 
 export type PaletteTypes = keyof typeof palette;
