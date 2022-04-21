@@ -3,6 +3,7 @@ import { TouchableOpacity } from "react-native";
 import { Text } from "../Text/Text";
 import { ButtonProps } from "./Button.types";
 import styles from "./Button.style";
+import { palette } from "src/themes";
 
 export const Button = ({
   children,
@@ -16,7 +17,11 @@ export const Button = ({
   const viewStyle = styles[category] || styles["primary"];
 
   const content = children || (
-    <Text numberOfLines={1} {...{ notTranslated, textCategory, text }} />
+    <Text
+      numberOfLines={1}
+      color={palette.black}
+      {...{ notTranslated, textCategory, text }}
+    />
   );
 
   return (
