@@ -19,7 +19,8 @@ export const TextInput = ({
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
     useTogglePasswordVisibility();
 
-  const isPassword = inputType === "password" ? true : false;
+  const isPassword =
+    inputType === "password" || inputType === "repeatPassword" ? true : false;
 
   const handleIfSecureText = () =>
     isPassword && passwordVisibility ? true : false;
