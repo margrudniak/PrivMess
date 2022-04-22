@@ -10,6 +10,7 @@
   },
   "form": {
     "password": "Password",
+    "repeatPassword": "Repeat Password",
     "register": "Register"
   },
   "form_validation": {
