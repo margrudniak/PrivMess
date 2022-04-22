@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { KeyboardAvoidingView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { isIos } from "src/utils";
 import {
   BareScreenProps,
@@ -21,7 +22,13 @@ const BareScreen = ({ ...props }: BareScreenProps) => {
 const KeyboardAwareScrollScreen = ({
   ...props
 }: KeyboardAwareScrollScreenProps) => {
-  return null;
+  return (
+    <KeyboardAwareScrollView>
+      <View {...props} style={[props.insetStyle, props.style]}>
+        {props.children}
+      </View>
+    </KeyboardAwareScrollView>
+  );
 };
 
 const KeyboardAwareScreen = ({ ...props }: KeyboardAwareScreenProps) => {
