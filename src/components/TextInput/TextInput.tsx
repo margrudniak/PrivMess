@@ -60,7 +60,9 @@ export const TextInput = ({
               <Text
                 textCategory="p1"
                 color={color.error}
-                text={`form_validation.${error.type}`}
+                text={`form_validation.${
+                  error.message ? error.message : error.type
+                }`}
               />
             )}
           </View>
