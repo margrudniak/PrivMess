@@ -14,6 +14,7 @@
     "register": "Zarejestruj się"
   },
   "form_validation": {
-    "required": "To pole jest wymagane"
+    "required": "To pole jest wymagane",
+    "emailFormat": "Niepoprawny format adresu e-mail"
   }
 }

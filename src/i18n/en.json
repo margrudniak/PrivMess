@@ -14,6 +14,7 @@
     "register": "Register"
   },
   "form_validation": {
-    "required": "This field is required"
+    "required": "This field is required",
+    "emailFormat": "Invalid e-mail address format"
   }
 }
