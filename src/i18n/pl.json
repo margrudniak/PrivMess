@@ -15,6 +15,8 @@
   },
   "form_validation": {
     "required": "To pole jest wymagane",
-    "emailFormat": "Niepoprawny format adresu e-mail"
+    "emailFormat": "Niepoprawny format adresu e-mail",
+    "passwordLength": "Hasło powinno się składać z conajmniej 8 znaków",
+    "passwordsMatch": "Hasła się nie zgadzają"
   }
 }
