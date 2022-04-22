@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert } from "react-native";
+import { Alert, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useForm } from "react-hook-form";
 import { color } from "src/themes";
@@ -22,6 +22,9 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
     password: {
       required: true,
     },
+    repeatPassword: {
+      required: true,
+    },
   };
 
   return (
@@ -31,26 +34,38 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
         style={styles.linearBackground}
       />
       <Screen style={styles.mainWrapper}>
-        <Header left="back" onPressLeft={onPressBack} />
-        <TextInput
-          notTranslated
-          label="E-mail"
-          inputType="email"
-          rules={rules.email}
-          {...{ control }}
+        <Header
+          left="back"
+          onPressLeft={onPressBack}
+          style={styles.headerContainer}
         />
-        <TextInput
-          label="form.password"
-          inputType="password"
-          rules={rules.password}
-          {...{ control }}
-        />
-        <Button
-          category="secondary"
-          textCategory="h3"
-          text={"form.register"}
-          onPress={handleSubmit(onSubmit)}
-        />
+        <View style={styles.formWrapper}>
+          <TextInput
+            notTranslated
+            label="E-mail"
+            inputType="email"
+            rules={rules.email}
+            {...{ control }}
+          />
+          <TextInput
+            label="form.password"
+            inputType="password"
+            rules={rules.password}
+            {...{ control }}
+          />
+          <TextInput
+            label="form.repeatPassword"
+            inputType="repeatPassword"
+            rules={rules.password}
+            {...{ control }}
+          />
+          <Button
+            category="secondary"
+            textCategory="h3"
+            text={"form.register"}
+            onPress={handleSubmit(onSubmit)}
+          />
+        </View>
       </Screen>
     </>
   );
