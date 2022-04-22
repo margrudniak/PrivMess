@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import { TextInput as RNTextInput, View } from "react-native";
-import { Controller, useController } from "react-hook-form";
-import { color, palette, PaletteTypes } from "src/themes";
+import React from "react";
+import { Pressable, TextInput as RNTextInput, View } from "react-native";
+import { Controller } from "react-hook-form";
+import { Ionicons } from "@expo/vector-icons";
+import { color } from "src/themes";
+import { useTogglePasswordVisibility } from "./utils/hooks/useTogglePasswordVisibility";
 import { Text } from "../Text/Text";
-import styles from "./TextInput.style";
 import { TextInputProps } from "./TextInput.types";
+import styles from "./TextInput.style";
 
 export const TextInput = ({
   label,
@@ -14,6 +16,14 @@ export const TextInput = ({
   rules,
   ...props
 }: TextInputProps) => {
+  const { passwordVisibility, rightIcon, handlePasswordVisibility } =
+    useTogglePasswordVisibility();
+
+  const isPassword = inputType === "password" ? true : false;
+
+  const handleIfSecureText = () =>
+    isPassword && passwordVisibility ? true : false;
+
   return (
     <Controller
       name={inputType}
@@ -29,12 +39,22 @@ export const TextInput = ({
               text={label}
               {...{ notTranslated }}
             />
-            <RNTextInput
-              onChangeText={onChange}
-              style={styles.input}
-              {...{ onBlur, value }}
-              {...props}
-            />
+            <View style={styles.inputWrapper}>
+              <RNTextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={onChange}
+                secureTextEntry={handleIfSecureText()}
+                style={styles.input}
+                {...{ onBlur, value }}
+                {...props}
+              />
+              {isPassword && (
+                <Pressable onPress={handlePasswordVisibility}>
+                  <Ionicons name={rightIcon} size={22} color="#232323" />
+                </Pressable>
+              )}
+            </View>
             {error && (
               <Text
                 textCategory="p1"

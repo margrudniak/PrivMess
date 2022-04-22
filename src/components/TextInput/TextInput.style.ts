@@ -1,8 +1,9 @@
 import { StyleSheet, ViewStyle } from "react-native";
-import { palette, spacing } from "src/themes";
+import { color, palette, spacing } from "src/themes";
 
 interface Style {
   mainWrapper: ViewStyle;
+  inputWrapper: ViewStyle;
   input: ViewStyle;
 }
 
@@ -10,13 +11,19 @@ const styles = StyleSheet.create<Style>({
   mainWrapper: {
     padding: spacing[2],
   },
-  input: {
+  inputWrapper: {
     backgroundColor: palette.white,
     padding: spacing[3],
     marginVertical: spacing[3],
-    borderWidth: 1,
+    borderWidth: 3,
     borderRadius: 10,
-    borderColor: palette.white,
+    borderColor: color.tertiaryDarker,
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+  input: {
+    width: "90%",
   },
 });
 
