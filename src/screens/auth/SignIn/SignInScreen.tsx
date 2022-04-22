@@ -33,7 +33,7 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
         colors={[color.tertiary, color.tertiaryDarker]}
         style={styles.linearBackground}
       />
-      <Screen style={styles.mainWrapper}>
+      <Screen keyboardAware style={styles.mainWrapper}>
         <Header
           left="back"
           onPressLeft={onPressBack}
