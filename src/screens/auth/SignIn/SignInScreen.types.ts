@@ -7,4 +7,5 @@ export interface SignInScreenProps
 export interface SignInInputsType {
   email: string;
   password: string;
+  repeatPassword: string;
 }
