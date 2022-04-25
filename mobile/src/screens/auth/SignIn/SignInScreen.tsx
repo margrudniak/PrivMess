@@ -25,9 +25,18 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
     },
     password: {
       required: true,
+      minLength: {
+        value: 8,
+        message: "passwordLength",
+      },
     },
     repeatPassword: {
       required: true,
+      minLength: {
+        value: 8,
+        message: "passwordLength",
+      },
+      validate: {},
     },
   };
 
