@@ -1,6 +1,6 @@
-import { ModelDefined, Sequelize } from 'sequelize';
+import { Sequelize } from 'sequelize';
 import { config } from '../config';
-import { createUser, UserAttributes, UserCreationAttributes } from '../models';
+import { createUser, User } from '../models';
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
@@ -17,7 +17,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 export const db: {
   Sequelize?: typeof Sequelize;
   sequelize?: typeof sequelize;
-  user?: ModelDefined<UserAttributes, UserCreationAttributes>;
+  user?: typeof User;
 } = {};
 
 db.Sequelize = Sequelize;
