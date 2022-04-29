@@ -1,17 +1,28 @@
-import { DataTypes, ModelDefined, Optional } from 'sequelize/types';
+import {
+  CreationOptional,
+  DataTypes,
+  InferAttributes,
+  InferCreationAttributes,
+  Model,
+  NonAttribute,
+  Sequelize
+} from 'sequelize';
 import bcrypt from 'bcrypt';
 
-export interface UserAttributes {
-  id: number;
-  email: string;
-  password: string;
+export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
+  declare id: CreationOptional<number>;
+  declare email: string;
+  declare password: string;
+  generateHash(password: string): NonAttribute<string> {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
+  }
+  validPassword(password: string): NonAttribute<boolean> {
+    return bcrypt.compareSync(password, this.password);
+  }
 }
 
-export type UserCreationAttributes = Optional<UserAttributes, 'id'>;
-
-export const createUser = (sequelize) => {
-  const User: ModelDefined<UserAttributes, UserCreationAttributes> = sequelize.define(
-    'users',
+export const createUser = (sequelize: Sequelize) => {
+  return User.init(
     {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -26,16 +37,8 @@ export const createUser = (sequelize) => {
       }
     },
     {
-      tableName: 'users',
-      instanceMethods: {
-        generateHash: function (password: string) {
-          return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
-        },
-        validPassword: function (password: string) {
-          return bcrypt.compareSync(password, this.password);
-        }
-      }
+      sequelize,
+      tableName: 'users'
     }
   );
-  return User;
 };
