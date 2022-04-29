@@ -1,4 +1,4 @@
-import { Options } from 'sequelize/types';
+import { Options } from 'sequelize';
 
 export const config: Options = {
   host: 'localhost',
