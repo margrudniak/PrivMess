@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 import { db } from '../db';
 
 const User = db.user;
@@ -8,7 +9,7 @@ export const signup = async (req: Request, res: Response) => {
   try {
     await User.create({
       email: req.body.email,
-      password: User.prototype.hashSync(req.body.password)
+      password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8))
     });
   } catch (error) {
     console.error('ERROR signup: ', error);
@@ -26,7 +27,7 @@ export const signin = async (req: Request, res: Response) => {
     if (!user) {
       return res.status(404).send({ message: 'User Not found.' });
     }
-    const passwordIsValid = await User.prototype.validPassword(req.body.password);
+    const passwordIsValid = user.validPassword(req.body.password);
     if (!passwordIsValid) {
       return res.status(401).send({
         accessToken: null,
