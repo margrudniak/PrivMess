@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { LogBox } from "react-native";
+import { Provider } from "react-redux";
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -7,6 +8,7 @@ import {
 import { AppNavigator } from "src/navigation";
 import "src/i18n";
 import { initFonts } from "src/themes/fonts";
+import { store } from "src/redux/store";
 
 const App = () => {
   LogBox.ignoreAllLogs();
@@ -19,7 +21,9 @@ const App = () => {
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <AppNavigator />
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
     </SafeAreaProvider>
   );
 };
