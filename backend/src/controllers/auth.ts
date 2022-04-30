@@ -1,12 +1,11 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { db } from '../db';
-
-const User = db.user;
+import { User } from '../models';
 
 export const signup = async (req: Request, res: Response) => {
   try {
+    console.log('invoked signup');
     await User.create({
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8))
