@@ -5,11 +5,13 @@ import { User } from '../models';
 
 export const signup = async (req: Request, res: Response) => {
   try {
-    console.log('invoked signup');
-    await User.create({
+    const user = await User.create({
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8))
     });
+    if (user) {
+      res.status(200).send({ message: 'User was registered successfully!' });
+    }
   } catch (error) {
     console.error('ERROR signup: ', error);
     res.status(500).send({ message: error.message });
