@@ -1,7 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { db } from '../db';
-
-const User = db.user;
+import { User } from '../models';
 
 export const checkIfEmailExist = async (req: Request, res: Response, next: NextFunction) => {
   try {
