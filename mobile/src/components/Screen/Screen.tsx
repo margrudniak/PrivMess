@@ -3,7 +3,7 @@ import React from "react";
 import { KeyboardAvoidingView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { isIos } from "src/utils";
+import { isIos } from "src/utils/helpers";
 import {
   BareScreenProps,
   KeyboardAwareScreenProps,
