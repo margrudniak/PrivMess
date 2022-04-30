@@ -2,8 +2,8 @@ import { Options } from 'sequelize';
 
 export const config: Options = {
   host: 'localhost',
-  username: 'postgres',
-  password: '123',
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
   database: 'api',
   dialect: 'postgres',
   pool: {
