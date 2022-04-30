@@ -4,7 +4,7 @@ export const config: Options = {
   host: 'localhost',
   username: 'postgres',
   password: '123',
-  database: 'testdb',
+  database: 'api',
   dialect: 'postgres',
   pool: {
     max: 5,
