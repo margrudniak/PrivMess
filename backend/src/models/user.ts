@@ -4,12 +4,14 @@ import {
   InferAttributes,
   InferCreationAttributes,
   Model,
-  NonAttribute,
-  Sequelize
+  NonAttribute
 } from 'sequelize';
 import bcrypt from 'bcrypt';
-
-export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
+import { sequelize } from '../db';
+export class UserClass extends Model<
+  InferAttributes<UserClass>,
+  InferCreationAttributes<UserClass>
+> {
   declare id: CreationOptional<number>;
   declare email: string;
   declare password: string;
@@ -21,24 +23,23 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
   }
 }
 
-export const createUser = (sequelize: Sequelize) => {
-  return User.init(
-    {
-      id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        autoIncrement: true,
-        primaryKey: true
-      },
-      email: {
-        type: new DataTypes.STRING()
-      },
-      password: {
-        type: new DataTypes.STRING()
-      }
+export const User = UserClass.init(
+  {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true
     },
-    {
-      sequelize,
-      tableName: 'users'
+    email: {
+      type: new DataTypes.STRING()
+    },
+    password: {
+      type: new DataTypes.STRING()
     }
-  );
-};
+  },
+  {
+    sequelize,
+    timestamps: false,
+    tableName: 'users'
+  }
+);
