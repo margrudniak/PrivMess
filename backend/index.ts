@@ -20,5 +20,9 @@ sequelize.sync({ force: true }).then(() => {
   });
 });
 
+app.get('/', (req: Request, res: Response) => {
+  res.json({ info: 'Node.js, Express, and Postgres API' });
+});
+
 //routes
 app.use('/api/auth', authRoute);
