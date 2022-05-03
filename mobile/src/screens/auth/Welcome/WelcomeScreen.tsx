@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Text, Screen, Button } from "src/components";
 import { WelcomeScreenProps } from "./WelcomeScreen.types";
 import styles from "./WelcomeScreen.style";
 import { color } from "src/themes";
 import { Screens } from "src/navigation";
+import { useTestGetQuery } from "src/redux/slices";
 
 export const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
+  const { data } = useTestGetQuery();
+  // const onClickLogin = () => testGet();
   const onClickLogin = () => navigation.navigate(Screens.SignUp);
   const onClickRegister = () => navigation.navigate(Screens.SignIn);
+
+  useEffect(() => {
+    console.log("data", data);
+  }, [data]);
 
   return (
     <>
