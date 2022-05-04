@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IP_ADDRESS } from "@env";
 
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://localhost:8000",
+    baseUrl: `http://${IP_ADDRESS}:8000`,
   }),
   endpoints(builder) {
     return {
