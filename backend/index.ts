@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, NextFunction, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { sequelize } from './src/db';
@@ -8,6 +8,17 @@ dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 8080;
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const allowedOrigins = [`http://${process.env.IP_ADDRESS}:19000`, 'http://localhost:19000'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, authorization');
+  next();
+});
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -23,6 +34,5 @@ sequelize.sync({ force: true }).then(() => {
 app.get('/', (req: Request, res: Response) => {
   res.json({ info: 'Node.js, Express, and Postgres API' });
 });
-
 //routes
 app.use('/api/auth', authRoute);
