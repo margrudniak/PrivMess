@@ -8,14 +8,15 @@ import { Screens } from "src/navigation";
 import { useTestGetQuery } from "src/redux/slices";
 
 export const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
-  const { data } = useTestGetQuery();
+  const { data, error } = useTestGetQuery();
   // const onClickLogin = () => testGet();
-  const onClickLogin = () => navigation.navigate(Screens.SignUp);
-  const onClickRegister = () => navigation.navigate(Screens.SignIn);
+  const onClickLogin = () => navigation.navigate(Screens.SignIn);
+  const onClickRegister = () => navigation.navigate(Screens.SignUp);
 
   useEffect(() => {
+    console.log("error", error);
     console.log("data", data);
-  }, [data]);
+  }, [error, data]);
 
   return (
     <>
