@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useForm } from "react-hook-form";
@@ -12,7 +12,10 @@ import { ErrorType } from "src/types";
 import styles from "./SignUpScreen.style";
 
 export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
-  const { control, handleSubmit } = useForm<SignUpInputsType>();
+  const { control, handleSubmit, watch } = useForm<SignUpInputsType>();
+  const password = useRef({});
+  password.current = watch("password", "");
+
   const [signUp, { isLoading }] = useSignUpMutation();
 
   const onPressBack = () => navigation.goBack();
@@ -56,7 +59,8 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
         value: 8,
         message: "passwordLength",
       },
-      validate: {},
+      validate: (value: string) =>
+        value === password.current || "passwordsMatch",
     },
   };
 
@@ -78,19 +82,19 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
             label="E-mail"
             inputType="email"
             rules={rules.email}
-            {...{ control }}
+            control={control}
           />
           <TextInput
             label="form.password"
             inputType="password"
             rules={rules.password}
-            {...{ control }}
+            control={control}
           />
           <TextInput
             label="form.repeatPassword"
             inputType="repeatPassword"
-            rules={rules.password}
-            {...{ control }}
+            rules={rules.repeatPassword}
+            control={control}
           />
           <Button
             category="secondary"
