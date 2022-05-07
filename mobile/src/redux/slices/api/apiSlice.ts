@@ -12,7 +12,7 @@ export interface SignUpResponse {
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://${IP_ADDRESS}:8000`,
+    baseUrl: `http://${IP_ADDRESS}:8000/api`,
   }),
   endpoints(builder) {
     return {
@@ -24,7 +24,7 @@ export const apiSlice = createApi({
       }),
       signUp: builder.mutation<SignUpResponse, SignUpRequest>({
         query: (credentials) => ({
-          url: "login",
+          url: "/auth/signup",
           method: "POST",
           body: credentials,
         }),
