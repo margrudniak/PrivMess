@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { ParamList } from "./screen-params";
+import { ParamList, Screens } from "./screen-params";
+import { DashboardScreen } from "src/screens/app";
 
 export const MainNavigator = () => {
   const Stack = createStackNavigator<ParamList>();
@@ -12,7 +13,7 @@ export const MainNavigator = () => {
         headerShown: false,
       }}
     >
-      {/* <Stack.Screen name={Screens.Splash} component={SplashScreen} /> */}
+      <Stack.Screen name={Screens.Dashboard} component={DashboardScreen} />
     </Stack.Navigator>
   );
 };
