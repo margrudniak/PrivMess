@@ -1,13 +1,13 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewStyle } from 'react-native';
 
 export interface HeaderProps {
-  left?: "back";
+  left?: 'back';
   onPressLeft?: () => void;
   leftStyle?: StyleProp<ViewStyle>;
-  middle?: "logo";
+  middle?: 'logo';
   middleStyle?: StyleProp<ViewStyle>;
   onPressMiddle?: () => void;
-  right?: "profile";
+  right?: 'profile';
   rightStyle?: StyleProp<ViewStyle>;
   onPressRight?: () => void;
   style?: StyleProp<ViewStyle>;

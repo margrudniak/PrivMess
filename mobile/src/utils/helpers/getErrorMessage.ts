@@ -1,13 +1,11 @@
-import { ErrorType, ErrorWithMessage } from "src/types";
+import { ErrorType, ErrorWithMessage } from 'src/types';
 
-export const isErrorWithMessage = (
-  error: unknown
-): error is ErrorWithMessage => {
+export const isErrorWithMessage = (error: unknown): error is ErrorWithMessage => {
   return (
-    typeof error === "object" &&
+    typeof error === 'object' &&
     error !== null &&
-    "message" in error &&
-    typeof (error as Record<string, unknown>).message === "string"
+    'message' in error &&
+    typeof (error as Record<string, unknown>).message === 'string'
   );
 };
 

@@ -1,15 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { KeyboardAvoidingView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { isIos } from "src/utils/helpers";
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { KeyboardAvoidingView, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { isIos } from 'src/utils/helpers';
 import {
   BareScreenProps,
   KeyboardAwareScreenProps,
   KeyboardAwareScrollScreenProps,
-  ScreenProps,
-} from "./Screen.types";
+  ScreenProps
+} from './Screen.types';
 
 const BareScreen = ({ ...props }: BareScreenProps) => {
   return (
@@ -19,9 +19,7 @@ const BareScreen = ({ ...props }: BareScreenProps) => {
   );
 };
 
-const KeyboardAwareScrollScreen = ({
-  ...props
-}: KeyboardAwareScrollScreenProps) => {
+const KeyboardAwareScrollScreen = ({ ...props }: KeyboardAwareScrollScreenProps) => {
   return (
     <KeyboardAwareScrollView>
       <View {...props} style={[props.insetStyle, props.style]}>
@@ -34,7 +32,7 @@ const KeyboardAwareScrollScreen = ({
 const KeyboardAwareScreen = ({ ...props }: KeyboardAwareScreenProps) => {
   return (
     <KeyboardAvoidingView
-      behavior={isIos ? "padding" : "height"}
+      behavior={isIos ? 'padding' : 'height'}
       style={[props.insetStyle, props.style]}
     >
       {props.children}
@@ -46,7 +44,7 @@ export const Screen = (props: ScreenProps) => {
   const insets = useSafeAreaInsets();
   const insetStyle = {
     paddingTop: props.unsafeTop ? 0 : insets.top,
-    paddingBottom: props.unsafeBottom ? 0 : insets.bottom,
+    paddingBottom: props.unsafeBottom ? 0 : insets.bottom
   };
 
   const renderContent = () => {
@@ -62,7 +60,7 @@ export const Screen = (props: ScreenProps) => {
 
   return (
     <>
-      <StatusBar style={props.statusBar || "light"} />
+      <StatusBar style={props.statusBar || 'light'} />
       {renderContent()}
     </>
   );

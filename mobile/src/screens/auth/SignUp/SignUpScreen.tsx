@@ -1,20 +1,20 @@
-import React, { useRef } from "react";
-import { View } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { useForm } from "react-hook-form";
-import { showMessage } from "react-native-flash-message";
-import { color } from "src/themes";
-import { Screen, Header, TextInput, Button } from "src/components";
-import { SignUpInputsType, SignUpScreenProps } from "./SignUpScreen.types";
-import { getErrorMessage } from "src/utils/helpers";
-import { useSignUpMutation } from "src/redux/slices";
-import { ErrorType } from "src/types";
-import styles from "./SignUpScreen.style";
+import React, { useRef } from 'react';
+import { View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useForm } from 'react-hook-form';
+import { showMessage } from 'react-native-flash-message';
+import { color } from 'src/themes';
+import { Screen, Header, TextInput, Button } from 'src/components';
+import { SignUpInputsType, SignUpScreenProps } from './SignUpScreen.types';
+import { getErrorMessage } from 'src/utils/helpers';
+import { useSignUpMutation } from 'src/redux/slices';
+import { ErrorType } from 'src/types';
+import styles from './SignUpScreen.style';
 
 export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   const { control, handleSubmit, watch } = useForm<SignUpInputsType>();
   const password = useRef({});
-  password.current = watch("password", "");
+  password.current = watch('password', '');
 
   const [signUp, { isLoading }] = useSignUpMutation();
 
@@ -27,13 +27,13 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       if (user) {
         showMessage({
           message: user.message,
-          type: "success",
+          type: 'success'
         });
       }
     } catch (error) {
       showMessage({
         message: getErrorMessage(error as ErrorType),
-        type: "danger",
+        type: 'danger'
       });
     }
   };
@@ -43,25 +43,24 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
       required: true,
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: "emailFormat",
-      },
+        message: 'emailFormat'
+      }
     },
     password: {
       required: true,
       minLength: {
         value: 8,
-        message: "passwordLength",
-      },
+        message: 'passwordLength'
+      }
     },
     repeatPassword: {
       required: true,
       minLength: {
         value: 8,
-        message: "passwordLength",
+        message: 'passwordLength'
       },
-      validate: (value: string) =>
-        value === password.current || "passwordsMatch",
-    },
+      validate: (value: string) => value === password.current || 'passwordsMatch'
+    }
   };
 
   return (
@@ -71,11 +70,7 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
         style={styles.linearBackground}
       />
       <Screen keyboardAware style={styles.mainWrapper}>
-        <Header
-          left="back"
-          onPressLeft={onPressBack}
-          style={styles.headerContainer}
-        />
+        <Header left="back" onPressLeft={onPressBack} style={styles.headerContainer} />
         <View style={styles.formWrapper}>
           <TextInput
             notTranslated
@@ -99,7 +94,7 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
           <Button
             category="secondary"
             textCategory="h3"
-            text={"form.register"}
+            text={'form.register'}
             onPress={handleSubmit(onSubmit)}
           />
         </View>

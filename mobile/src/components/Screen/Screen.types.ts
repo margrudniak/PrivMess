@@ -1,5 +1,5 @@
-import { StatusBarStyle } from "expo-status-bar";
-import { StyleProp, ViewStyle } from "react-native";
+import { StatusBarStyle } from 'expo-status-bar';
+import { StyleProp, ViewStyle } from 'react-native';
 
 export interface ScreenProps {
   keyboardAware?: boolean;

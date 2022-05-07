@@ -1,7 +1,7 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { ParamList, Screens } from "./screen-params";
-import { SignInScreen, SignUpScreen, WelcomeScreen } from "src/screens/auth";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { ParamList, Screens } from './screen-params';
+import { SignInScreen, SignUpScreen, WelcomeScreen } from 'src/screens/auth';
 
 export const AuthNavigator = () => {
   const Stack = createStackNavigator<ParamList>();
@@ -10,8 +10,8 @@ export const AuthNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         animationEnabled: false,
-        cardStyle: { backgroundColor: "transparent" },
-        headerShown: false,
+        cardStyle: { backgroundColor: 'transparent' },
+        headerShown: false
       }}
       initialRouteName={Screens.Welcome}
     >

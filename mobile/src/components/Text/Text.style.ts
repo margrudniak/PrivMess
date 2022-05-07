@@ -1,10 +1,10 @@
-import { StyleSheet, TextStyle } from "react-native";
-import { color, typography } from "src/themes";
+import { StyleSheet, TextStyle } from 'react-native';
+import { color, typography } from 'src/themes';
 
 const base: TextStyle = {
   fontFamily: typography.primary,
   color: color.text,
-  fontSize: 17,
+  fontSize: 17
 };
 
 interface Style {
@@ -22,32 +22,32 @@ const styles = StyleSheet.create<Style>({
   default: base,
   h0: {
     ...base,
-    fontSize: 40,
+    fontSize: 40
   },
   h1: {
     ...base,
-    fontSize: 32,
+    fontSize: 32
   },
   h2: {
     ...base,
-    fontSize: 26,
+    fontSize: 26
   },
   h3: {
     ...base,
-    fontSize: 22,
+    fontSize: 22
   },
   h4: {
     ...base,
-    fontSize: 20,
+    fontSize: 20
   },
   p1: {
     ...base,
-    fontSize: 13,
+    fontSize: 13
   },
   p2: {
     ...base,
-    fontSize: 11,
-  },
+    fontSize: 11
+  }
 });
 
 export type TextStyleProps = keyof typeof styles;

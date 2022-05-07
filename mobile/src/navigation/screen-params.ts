@@ -1,8 +1,8 @@
 export enum Screens {
-  Welcome = "welcome",
-  SignIn = "signIn",
-  SignUp = "signUp",
-  Dashboard = "dashboard",
+  Welcome = 'welcome',
+  SignIn = 'signIn',
+  SignUp = 'signUp',
+  Dashboard = 'dashboard'
 }
 
 export type ParamList = {

@@ -1,8 +1,8 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { MainNavigator } from "./main-navigator";
-import { AuthNavigator } from "./auth-navigator";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { MainNavigator } from './main-navigator';
+import { AuthNavigator } from './auth-navigator';
 
 export type RootParamList = {
   authStack: undefined;
@@ -15,27 +15,26 @@ const RootStack = () => {
   const isSignedIn = false;
 
   const navigatorComponent = isSignedIn ? MainNavigator : AuthNavigator;
-  const navigatorName = isSignedIn ? "mainStack" : "authStack";
+  const navigatorName = isSignedIn ? 'mainStack' : 'authStack';
 
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: false
       }}
     >
       <Stack.Screen
         name={navigatorName}
         component={navigatorComponent}
         options={{
-          headerShown: false,
+          headerShown: false
         }}
       />
     </Stack.Navigator>
   );
 };
 
-interface NavigationProps
-  extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
+interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 
 export const AppNavigator = (props: NavigationProps) => {
   return (
@@ -48,4 +47,4 @@ export const AppNavigator = (props: NavigationProps) => {
   );
 };
 
-AppNavigator.displayName = "AppNavigator";
+AppNavigator.displayName = 'AppNavigator';

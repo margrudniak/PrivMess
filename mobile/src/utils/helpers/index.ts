@@ -1,2 +1,2 @@
-export * from "./platform";
-export * from "./getErrorMessage";
+export * from './platform';
+export * from './getErrorMessage';

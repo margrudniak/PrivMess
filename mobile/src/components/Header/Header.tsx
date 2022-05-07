@@ -1,9 +1,9 @@
-import React from "react";
-import { View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { HeaderProps } from "./Header.types";
-import { color } from "src/themes";
-import styles from "./Header.style";
+import React from 'react';
+import { View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { HeaderProps } from './Header.types';
+import { color } from 'src/themes';
+import styles from './Header.style';
 
 export const Header = ({
   left,
@@ -15,19 +15,12 @@ export const Header = ({
   right,
   onPressRight,
   rightStyle,
-  style,
+  style
 }: HeaderProps) => {
   const renderLeft = () => {
     switch (left) {
-      case "back":
-        return (
-          <Ionicons
-            name="arrow-back"
-            size={45}
-            color={color.icon}
-            onPress={onPressLeft}
-          />
-        );
+      case 'back':
+        return <Ionicons name="arrow-back" size={45} color={color.icon} onPress={onPressLeft} />;
         break;
       default:
         void 0;
@@ -37,7 +30,7 @@ export const Header = ({
 
   const renderMiddle = () => {
     switch (middle) {
-      case "logo":
+      case 'logo':
         break;
       default:
         break;
@@ -46,7 +39,7 @@ export const Header = ({
 
   const renderRight = () => {
     switch (right) {
-      case "profile":
+      case 'profile':
         break;
       default:
         break;
@@ -55,12 +48,8 @@ export const Header = ({
   return (
     <View style={[styles.wrapper, style]}>
       <View style={[styles.leftWrapper, leftStyle]}>{renderLeft()}</View>
-      <View style={[styles.middleWrapper, middleStyle]}>
-        {/* {renderMiddle()} */}
-      </View>
-      <View style={[styles.rightWrapper, rightStyle]}>
-        {/* {renderRight()} */}
-      </View>
+      <View style={[styles.middleWrapper, middleStyle]}>{/* {renderMiddle()} */}</View>
+      <View style={[styles.rightWrapper, rightStyle]}>{/* {renderRight()} */}</View>
     </View>
   );
 };

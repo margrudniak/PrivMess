@@ -1,8 +1,8 @@
-import { palette } from "./palette";
+import { palette } from './palette';
 
 export const color = {
   palette,
-  transparent: "rgba(0, 0, 0, 0)",
+  transparent: 'rgba(0, 0, 0, 0)',
   background: palette.tundora,
   primary: palette.portica,
   secondary: palette.jordyBlue,
@@ -10,7 +10,7 @@ export const color = {
   tertiaryDarker: palette.mineShaft,
   text: palette.white,
   icon: palette.white,
-  error: palette.mandy,
+  error: palette.mandy
 };
 
 export type ColorTypes = keyof typeof color;

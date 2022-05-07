@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle } from "react-native";
+import { StyleSheet, ViewStyle } from 'react-native';
 
 interface Style {
   wrapper: ViewStyle;
@@ -8,26 +8,26 @@ interface Style {
 }
 
 const baseWrapper = {
-  justifyContent: "center",
-  alignItems: "center",
+  justifyContent: 'center',
+  alignItems: 'center'
 };
 
 const styles = StyleSheet.create<Style>({
   wrapper: {
-    flexDirection: "row",
+    flexDirection: 'row'
   },
   leftWrapper: {
     ...baseWrapper,
-    flex: 1,
+    flex: 1
   } as ViewStyle,
   middleWrapper: {
     ...baseWrapper,
-    flex: 3,
+    flex: 3
   } as ViewStyle,
   rightWrapper: {
     ...baseWrapper,
-    flex: 1,
-  } as ViewStyle,
+    flex: 1
+  } as ViewStyle
 });
 
 export default styles;
