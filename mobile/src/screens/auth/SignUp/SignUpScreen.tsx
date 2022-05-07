@@ -1,18 +1,38 @@
 import React from "react";
-import { Alert, View } from "react-native";
+import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useForm } from "react-hook-form";
+import { showMessage } from "react-native-flash-message";
 import { color } from "src/themes";
 import { Screen, Header, TextInput, Button } from "src/components";
 import { SignUpInputsType, SignUpScreenProps } from "./SignUpScreen.types";
+import { getErrorMessage } from "src/utils/helpers";
+import { useSignUpMutation } from "src/redux/slices";
+import { ErrorType } from "src/types";
 import styles from "./SignUpScreen.style";
 
 export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   const { control, handleSubmit } = useForm<SignUpInputsType>();
+  const [signUp, { isLoading }] = useSignUpMutation();
 
   const onPressBack = () => navigation.goBack();
-  const onSubmit = (data) => {
-    console.log("done");
+
+  const onSubmit = async (data: SignUpInputsType) => {
+    const { repeatPassword, ...inputData } = data;
+    try {
+      const user = await signUp(inputData).unwrap();
+      if (user) {
+        showMessage({
+          message: user.message,
+          type: "success",
+        });
+      }
+    } catch (error) {
+      showMessage({
+        message: getErrorMessage(error as ErrorType),
+        type: "danger",
+      });
+    }
   };
 
   const rules = {
