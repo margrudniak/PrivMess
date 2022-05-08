@@ -6,5 +6,6 @@
   "trailingComma": "none",
   "jsxBracketSameLine": false,
   "semi": true,
-  "quoteProps": "consistent"
+  "quoteProps": "consistent",
+  "importOrder": ["^(?!(react))\\w+", "^src/(.*)$", "^[./]"]
 }
