@@ -4,19 +4,24 @@ import { View } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Button, Header, Screen, TextInput } from 'src/components';
-import { useSignUpMutation } from 'src/redux/slices';
+import { Screens } from 'src/navigation';
+import { useSignUpMutation, useSignInMutation, signInAction } from 'src/redux/slices';
 import { color } from 'src/themes';
 import { ErrorType } from 'src/types';
 import { getErrorMessage } from 'src/utils/helpers';
+import { useAppDispatch } from 'src/utils/hooks';
 import styles from './SignUpScreen.style';
 import { SignUpInputsType, SignUpScreenProps } from './SignUpScreen.types';
 
 export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   const { control, handleSubmit, watch } = useForm<SignUpInputsType>();
+  const dispatch = useAppDispatch();
+
   const password = useRef({});
   password.current = watch('password', '');
 
-  const [signUp, { isLoading }] = useSignUpMutation();
+  const [signUp, { isLoading: isLoadingSignUp }] = useSignUpMutation();
+  const [signIn, { isLoading: isLoadingSignIn }] = useSignInMutation();
 
   const onPressBack = () => navigation.goBack();
 
@@ -29,6 +34,11 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
           message: user.message,
           type: 'success'
         });
+        const userSignedIn = await signIn(inputData).unwrap();
+        if (userSignedIn.accessToken && userSignedIn.email) {
+          dispatch(signInAction({ email: userSignedIn.email, token: userSignedIn.accessToken }));
+          navigation.navigate(Screens.Dashboard);
+        }
       }
     } catch (error) {
       showMessage({
