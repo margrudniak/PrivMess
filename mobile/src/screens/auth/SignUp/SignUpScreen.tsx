@@ -1,15 +1,15 @@
 import React, { useRef } from 'react';
-import { View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useForm } from 'react-hook-form';
+import { View } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
-import { color } from 'src/themes';
-import { Screen, Header, TextInput, Button } from 'src/components';
-import { SignUpInputsType, SignUpScreenProps } from './SignUpScreen.types';
-import { getErrorMessage } from 'src/utils/helpers';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Button, Header, Screen, TextInput } from 'src/components';
 import { useSignUpMutation } from 'src/redux/slices';
+import { color } from 'src/themes';
 import { ErrorType } from 'src/types';
+import { getErrorMessage } from 'src/utils/helpers';
 import styles from './SignUpScreen.style';
+import { SignUpInputsType, SignUpScreenProps } from './SignUpScreen.types';
 
 export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   const { control, handleSubmit, watch } = useForm<SignUpInputsType>();

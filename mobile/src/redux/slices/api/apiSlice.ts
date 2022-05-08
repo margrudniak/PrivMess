@@ -1,5 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IP_ADDRESS } from '@env';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 export interface SignUpRequest {
   email: string;
   password: string;

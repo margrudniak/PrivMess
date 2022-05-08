@@ -1,9 +1,9 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Text } from '../Text/Text';
-import { ButtonProps } from './Button.types';
-import styles from './Button.style';
 import { palette } from 'src/themes';
+import { Text } from '../Text/Text';
+import styles from './Button.style';
+import { ButtonProps } from './Button.types';
 
 export const Button = ({
   children,

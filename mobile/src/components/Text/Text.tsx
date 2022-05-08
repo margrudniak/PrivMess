@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 import i18n from 'i18n-js';
-import { TextProps } from './Text.types';
 import styles from './Text.style';
+import { TextProps } from './Text.types';
 
 export const Text = ({
   notTranslated,

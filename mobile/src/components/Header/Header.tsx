@@ -1,9 +1,9 @@
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { HeaderProps } from './Header.types';
 import { color } from 'src/themes';
 import styles from './Header.style';
+import { HeaderProps } from './Header.types';
 
 export const Header = ({
   left,

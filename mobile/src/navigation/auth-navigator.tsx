@@ -1,7 +1,7 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ParamList, Screens } from './screen-params';
+import React from 'react';
 import { SignInScreen, SignUpScreen, WelcomeScreen } from 'src/screens/auth';
+import { ParamList, Screens } from './screen-params';
 
 export const AuthNavigator = () => {
   const Stack = createStackNavigator<ParamList>();

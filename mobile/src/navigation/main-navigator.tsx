@@ -1,7 +1,7 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ParamList, Screens } from './screen-params';
+import React from 'react';
 import { DashboardScreen } from 'src/screens/app';
+import { ParamList, Screens } from './screen-params';
 
 export const MainNavigator = () => {
   const Stack = createStackNavigator<ParamList>();

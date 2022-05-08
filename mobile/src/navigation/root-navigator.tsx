@@ -1,8 +1,8 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { MainNavigator } from './main-navigator';
+import React from 'react';
 import { AuthNavigator } from './auth-navigator';
+import { MainNavigator } from './main-navigator';
 
 export type RootParamList = {
   authStack: undefined;

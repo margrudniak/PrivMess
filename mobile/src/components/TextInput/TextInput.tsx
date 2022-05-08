@@ -1,12 +1,12 @@
-import React from 'react';
-import { Pressable, TextInput as RNTextInput, View } from 'react-native';
-import { Controller } from 'react-hook-form';
 import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { Controller } from 'react-hook-form';
+import { Pressable, TextInput as RNTextInput, View } from 'react-native';
 import { color } from 'src/themes';
-import { useTogglePasswordVisibility } from './utils/hooks/useTogglePasswordVisibility';
 import { Text } from '../Text/Text';
-import { TextInputProps } from './TextInput.types';
 import styles from './TextInput.style';
+import { TextInputProps } from './TextInput.types';
+import { useTogglePasswordVisibility } from './utils/hooks/useTogglePasswordVisibility';
 
 export const TextInput = ({
   label,

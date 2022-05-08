@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { LogBox } from 'react-native';
-import { Provider } from 'react-redux';
-import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import FlashMessage from 'react-native-flash-message';
-import { AppNavigator } from 'src/navigation';
+import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
 import 'src/i18n';
-import { initFonts } from 'src/themes/fonts';
+import { AppNavigator } from 'src/navigation';
 import { store } from 'src/redux/store';
+import { initFonts } from 'src/themes/fonts';
 
 const App = () => {
   LogBox.ignoreAllLogs();
