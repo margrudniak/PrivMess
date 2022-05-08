@@ -48,3 +48,11 @@ export const signin = async (req: Request, res: Response) => {
     res.status(500).send({ message: error.message });
   }
 };
+
+export const signout = async (req: Request, res: Response) => {
+  try {
+  } catch (error) {
+    console.error('ERROR signout: ', error);
+    res.status(500).send({ message: error.message });
+  }
+};
