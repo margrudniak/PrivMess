@@ -10,6 +10,18 @@ export interface SignUpResponse {
   message: string;
 }
 
+export interface SignInRequest {
+  email: string;
+  password: string;
+}
+
+export interface SignInResponse {
+  id?: string;
+  email?: string;
+  accessToken?: string;
+  message?: string;
+}
+
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
@@ -29,9 +41,16 @@ export const apiSlice = createApi({
           method: 'POST',
           body: credentials
         })
+      }),
+      signIn: builder.mutation<SignInResponse, SignInRequest>({
+        query: (credentials) => ({
+          url: '/auth/signin',
+          method: 'POST',
+          body: credentials
+        })
       })
     };
   }
 });
 
-export const { useTestGetQuery, useSignUpMutation } = apiSlice;
+export const { useTestGetQuery, useSignUpMutation, useSignInMutation } = apiSlice;
