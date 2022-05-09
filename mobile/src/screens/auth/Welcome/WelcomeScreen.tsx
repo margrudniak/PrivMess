@@ -8,15 +8,9 @@ import styles from './WelcomeScreen.style';
 import { WelcomeScreenProps } from './WelcomeScreen.types';
 
 export const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
-  const { data, error } = useTestGetQuery();
   // const onClickLogin = () => testGet();
   const onClickLogin = () => navigation.navigate(Screens.SignIn);
   const onClickRegister = () => navigation.navigate(Screens.SignUp);
-
-  useEffect(() => {
-    console.log('error', error);
-    console.log('data', data);
-  }, [error, data]);
 
   return (
     <>
