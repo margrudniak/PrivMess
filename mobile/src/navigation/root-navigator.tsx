@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import { useAppSelector } from 'src/utils/hooks';
 import { AuthNavigator } from './auth-navigator';
 import { MainNavigator } from './main-navigator';
 
@@ -12,7 +13,7 @@ export type RootParamList = {
 const Stack = createStackNavigator<RootParamList>();
 
 const RootStack = () => {
-  const isSignedIn = false;
+  const isSignedIn = useAppSelector((state) => state.auth.isSignedIn);
 
   const navigatorComponent = isSignedIn ? MainNavigator : AuthNavigator;
   const navigatorName = isSignedIn ? 'mainStack' : 'authStack';
