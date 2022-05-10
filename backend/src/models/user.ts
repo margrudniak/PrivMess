@@ -8,6 +8,7 @@ import {
 } from 'sequelize';
 import bcrypt from 'bcrypt';
 import { sequelize } from '../db';
+import { Post } from './post';
 export class UserClass extends Model<
   InferAttributes<UserClass>,
   InferCreationAttributes<UserClass>
@@ -43,3 +44,9 @@ export const User = UserClass.init(
     tableName: 'users'
   }
 );
+
+User.hasMany(Post, {
+  sourceKey: 'id',
+  foreignKey: 'ownerId',
+  as: 'posts'
+});
