@@ -43,11 +43,7 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
       }
     },
     password: {
-      required: true,
-      minLength: {
-        value: 8,
-        message: 'passwordLength'
-      }
+      required: true
     }
   };
 
@@ -76,7 +72,7 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
           <Button
             category="secondary"
             textCategory="h3"
-            text={'form.register'}
+            text={'auth.logIn'}
             onPress={handleSubmit(onSubmit)}
           />
         </View>
