@@ -17,6 +17,8 @@
     "required": "To pole jest wymagane",
     "emailFormat": "Niepoprawny format adresu e-mail",
     "passwordLength": "Hasło powinno się składać z conajmniej 8 znaków",
-    "passwordsMatch": "Hasła się nie zgadzają"
+    "passwordsMatch": "Hasła się nie zgadzają",
+    "userNotFound": "Nie znaleziono użytkownika.",
+    "invalidPassword": "Nieprawidłowe hasło!"
   }
 }

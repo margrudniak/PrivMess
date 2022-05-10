@@ -17,6 +17,8 @@
     "required": "This field is required",
     "emailFormat": "Invalid e-mail address format",
     "passwordLength": "Password must have at least 8 characters",
-    "passwordsMatch": "The passwords do not match"
+    "passwordsMatch": "The passwords do not match",
+    "userNotFound": "User Not found.",
+    "invalidPassword": "Invalid Password!"
   }
 }
