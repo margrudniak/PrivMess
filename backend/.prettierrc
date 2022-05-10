@@ -5,8 +5,5 @@
   "singleQuote": true,
   "trailingComma": "none",
   "jsxBracketSameLine": false,
-  "semi": true,
-  "quoteProps": "consistent",
-  "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "semi": true
 }
