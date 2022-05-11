@@ -2,7 +2,7 @@ import express, { Express, NextFunction, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { sequelize } from './src/db';
-import { authRoute } from './src/routes';
+import { authRoute, postRoute } from './src/routes';
 
 dotenv.config();
 
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync().then(() => {
   app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
   });
@@ -36,3 +36,4 @@ app.get('/', (req: Request, res: Response) => {
 });
 //routes
 app.use('/api/auth', authRoute);
+app.use('/api/post', postRoute);
