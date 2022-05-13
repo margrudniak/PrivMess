@@ -7,7 +7,7 @@ import {
   Model
 } from 'sequelize';
 import { sequelize } from '../db';
-import { UserClass } from './user';
+import { User, UserClass } from './user';
 
 export class PostClass extends Model<
   InferAttributes<PostClass>,
