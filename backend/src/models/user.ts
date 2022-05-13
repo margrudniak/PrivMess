@@ -1,4 +1,5 @@
 import {
+  Association,
   CreationOptional,
   DataTypes,
   InferAttributes,
@@ -8,10 +9,10 @@ import {
 } from 'sequelize';
 import bcrypt from 'bcrypt';
 import { sequelize } from '../db';
-import { Post } from './post';
+import { Post, PostClass } from './post';
 export class UserClass extends Model<
-  InferAttributes<UserClass>,
-  InferCreationAttributes<UserClass>
+  InferAttributes<UserClass, { omit: 'post' }>,
+  InferCreationAttributes<UserClass, { omit: 'post' }>
 > {
   declare id: CreationOptional<number>;
   declare email: string;
@@ -22,6 +23,9 @@ export class UserClass extends Model<
   validPassword(password: string): NonAttribute<boolean> {
     return bcrypt.compareSync(password, this.password);
   }
+  declare static associations: {
+    projects: Association<UserClass, PostClass>;
+  };
 }
 
 export const User = UserClass.init(
@@ -47,6 +51,10 @@ export const User = UserClass.init(
 
 User.hasMany(Post, {
   sourceKey: 'id',
-  foreignKey: 'ownerId',
+  foreignKey: 'id',
   as: 'posts'
+});
+
+Post.belongsTo(User, {
+  foreignKey: 'id'
 });
