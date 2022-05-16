@@ -1,9 +1,17 @@
 import { Request, Response } from 'express';
-import { Post } from '../models';
+import { Post, User } from '../models';
 
 export const createPost = async (req: Request, res: Response) => {
   try {
-    const post = await Post.create({
+    const user = await User.findOne({
+      where: {
+        id: req.body.id
+      }
+    });
+    if (!user) {
+      return res.status(404).send({ message: 'User Not found.' });
+    }
+    const post = await user.addPost({
       message: req.body.message,
       createdAt: new Date()
     });
