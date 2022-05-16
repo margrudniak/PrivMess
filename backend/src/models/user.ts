@@ -2,6 +2,9 @@ import {
   Association,
   CreationOptional,
   DataTypes,
+  HasManyAddAssociationMixin,
+  HasManyAddAssociationsMixin,
+  HasManyCreateAssociationMixin,
   InferAttributes,
   InferCreationAttributes,
   Model,
@@ -11,12 +14,13 @@ import bcrypt from 'bcrypt';
 import { sequelize } from '../db';
 import { Post, PostClass } from './post';
 export class UserClass extends Model<
-  InferAttributes<UserClass, { omit: 'post' }>,
-  InferCreationAttributes<UserClass, { omit: 'post' }>
+  InferAttributes<UserClass>,
+  InferCreationAttributes<UserClass>
 > {
   declare id: CreationOptional<number>;
   declare email: string;
   declare password: string;
+  declare addPost: HasManyCreateAssociationMixin<PostClass, 'userId'>;
   generateHash(password: string): NonAttribute<string> {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
   }
@@ -51,7 +55,7 @@ export const User = UserClass.init(
 
 User.hasMany(Post, {
   sourceKey: 'id',
-  foreignKey: 'id',
+  foreignKey: 'userId',
   as: 'posts'
 });
 
