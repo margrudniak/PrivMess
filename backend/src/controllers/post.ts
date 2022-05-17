@@ -3,11 +3,7 @@ import { Post, User } from '../models';
 
 export const createPost = async (req: Request, res: Response) => {
   try {
-    const user = await User.findOne({
-      where: {
-        id: req.body.id
-      }
-    });
+    const user = await User.findByPk(req.body.id);
     if (!user) {
       return res.status(404).send({ message: 'User Not found.' });
     }

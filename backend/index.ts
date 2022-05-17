@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// sequelize.sync({ force: true }).then(() => {
 sequelize.sync().then(() => {
   app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
