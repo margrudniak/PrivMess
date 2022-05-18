@@ -4,7 +4,14 @@ import {
   DataTypes,
   HasManyAddAssociationMixin,
   HasManyAddAssociationsMixin,
+  HasManyCountAssociationsMixin,
   HasManyCreateAssociationMixin,
+  HasManyGetAssociationsMixin,
+  HasManyHasAssociationMixin,
+  HasManyHasAssociationsMixin,
+  HasManyRemoveAssociationMixin,
+  HasManyRemoveAssociationsMixin,
+  HasManySetAssociationsMixin,
   InferAttributes,
   InferCreationAttributes,
   Model,
@@ -20,7 +27,16 @@ export class UserClass extends Model<
   declare id: CreationOptional<number>;
   declare email: string;
   declare password: string;
-  declare addPost: HasManyCreateAssociationMixin<PostClass, 'userId'>;
+  declare getPosts: HasManyGetAssociationsMixin<PostClass>;
+  declare addPost: HasManyAddAssociationMixin<PostClass, number>;
+  declare addPosts: HasManyAddAssociationsMixin<PostClass, number>;
+  declare setPosts: HasManySetAssociationsMixin<PostClass, number>;
+  declare removePost: HasManyRemoveAssociationMixin<PostClass, number>;
+  declare removePosts: HasManyRemoveAssociationsMixin<PostClass, number>;
+  declare hasPost: HasManyHasAssociationMixin<PostClass, number>;
+  declare hasPosts: HasManyHasAssociationsMixin<PostClass, number>;
+  declare countPosts: HasManyCountAssociationsMixin;
+  declare createPost: HasManyCreateAssociationMixin<PostClass, 'userId'>;
   generateHash(password: string): NonAttribute<string> {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
   }
