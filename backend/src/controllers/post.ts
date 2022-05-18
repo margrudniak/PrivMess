@@ -7,7 +7,7 @@ export const createPost = async (req: Request, res: Response) => {
     if (!user) {
       return res.status(404).send({ message: 'User Not found.' });
     }
-    const post = await user.addPost({
+    const post = await user.createPost({
       message: req.body.message,
       createdAt: new Date()
     });
