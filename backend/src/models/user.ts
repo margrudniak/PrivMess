@@ -44,7 +44,7 @@ export class UserClass extends Model<
     return bcrypt.compareSync(password, this.password);
   }
   declare static associations: {
-    projects: Association<UserClass, PostClass>;
+    posts: Association<UserClass, PostClass>;
   };
 }
 
@@ -70,11 +70,6 @@ export const User = UserClass.init(
 );
 
 User.hasMany(Post, {
-  sourceKey: 'id',
   foreignKey: 'userId',
   as: 'posts'
-});
-
-Post.belongsTo(User, {
-  foreignKey: 'id'
 });
