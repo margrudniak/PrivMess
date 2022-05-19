@@ -15,7 +15,6 @@ export class PostClass extends Model<
 > {
   declare id: CreationOptional<number>;
   declare userId: ForeignKey<UserClass['id']>;
-  declare createdAt: CreationOptional<Date>;
   declare message: string;
 }
 
@@ -26,7 +25,6 @@ export const Post = PostClass.init(
       autoIncrement: true,
       primaryKey: true
     },
-    createdAt: DataTypes.DATE,
     message: {
       type: new DataTypes.STRING(),
       allowNull: false
@@ -34,7 +32,6 @@ export const Post = PostClass.init(
   },
   {
     sequelize,
-    timestamps: false,
     tableName: 'posts'
   }
 );
