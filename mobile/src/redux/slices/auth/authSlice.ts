@@ -2,12 +2,14 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface AuthState {
   isSignedIn: boolean;
+  userId: number;
   email: string;
   token: string;
 }
 
 const initialState: AuthState = {
   isSignedIn: false,
+  userId: 0,
   email: '',
   token: ''
 };
@@ -18,14 +20,18 @@ export const authSlice = createSlice({
   reducers: {
     signInAction: (
       state,
-      { payload: { email, token } }: PayloadAction<{ email: string; token: string }>
+      {
+        payload: { email, userId, token }
+      }: PayloadAction<{ email: string; userId: number; token: string }>
     ) => {
       state.isSignedIn = true;
+      state.userId = userId;
       state.email = email;
       state.token = token;
     },
     signOutAction: (state) => {
       state.isSignedIn = false;
+      state.userId = 0;
       state.email = '';
       state.token = '';
     }

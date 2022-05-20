@@ -21,8 +21,14 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
   const onSubmit = async (data: SignInInputsType) => {
     try {
       const userSignedIn = await signIn(data).unwrap();
-      if (userSignedIn.accessToken && userSignedIn.email) {
-        dispatch(signInAction({ email: userSignedIn.email, token: userSignedIn.accessToken }));
+      if (userSignedIn.accessToken && userSignedIn.email && userSignedIn.id) {
+        dispatch(
+          signInAction({
+            userId: userSignedIn.id,
+            email: userSignedIn.email,
+            token: userSignedIn.accessToken
+          })
+        );
       }
     } catch (error) {
       showMessage({
