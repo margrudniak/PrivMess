@@ -8,3 +8,4 @@ export * from './Text/Text';
 export * from './Text/Text.types';
 export * from './Header/Header';
 export * from './Header/Header.types';
+export * from './DismissKeyboard/DismissKeyboard';
