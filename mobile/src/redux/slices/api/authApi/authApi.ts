@@ -1,32 +1,12 @@
-import { IP_ADDRESS } from '@env';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_URL } from 'src/config';
 import { RootState } from 'src/redux/store';
+import { SignInRequest, SignInResponse, SignUpRequest, SignUpResponse } from './authApi.types';
 
-export interface SignUpRequest {
-  email: string;
-  password: string;
-}
-
-export interface SignUpResponse {
-  message: string;
-}
-
-export interface SignInRequest {
-  email: string;
-  password: string;
-}
-
-export interface SignInResponse {
-  id?: number;
-  email?: string;
-  accessToken?: string;
-  message?: string;
-}
-
-export const apiSlice = createApi({
-  reducerPath: 'api',
+export const authApi = createApi({
+  reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://${IP_ADDRESS}:8000/api`,
+    baseUrl: `${API_URL}/auth`,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
       if (token) {
@@ -37,22 +17,16 @@ export const apiSlice = createApi({
   }),
   endpoints(builder) {
     return {
-      testGet: builder.query<Object, void>({
-        query: () => ({
-          url: '/',
-          method: 'GET'
-        })
-      }),
       signUp: builder.mutation<SignUpResponse, SignUpRequest>({
         query: (credentials) => ({
-          url: '/auth/signup',
+          url: '/signup',
           method: 'POST',
           body: credentials
         })
       }),
       signIn: builder.mutation<SignInResponse, SignInRequest>({
         query: (credentials) => ({
-          url: '/auth/signin',
+          url: '/signin',
           method: 'POST',
           body: credentials
         })
@@ -61,4 +35,4 @@ export const apiSlice = createApi({
   }
 });
 
-export const { useTestGetQuery, useSignUpMutation, useSignInMutation } = apiSlice;
+export const { useSignUpMutation, useSignInMutation } = authApi;

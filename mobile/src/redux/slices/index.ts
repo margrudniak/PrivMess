@@ -1,2 +1,2 @@
-export * from './api/apiSlice';
+export * from './api';
 export * from './auth/authSlice';
