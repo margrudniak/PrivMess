@@ -25,10 +25,9 @@ export const postsApi = createApi({
   endpoints(builder) {
     return {
       getPosts: builder.query<GetPostResponse, GetPostRequest>({
-        query: (credentials) => ({
-          url: '/posts',
-          method: 'GET',
-          body: credentials
+        query: ({ page = 0, size = 5 }) => ({
+          url: `/posts?page=${page}&size=${size}`,
+          method: 'GET'
         })
       }),
       createPost: builder.mutation<CreatePostResponse, CreatePostRequest>({
@@ -49,4 +48,4 @@ export const postsApi = createApi({
   }
 });
 
-export const {} = postsApi;
+export const { useCreatePostMutation, useRemovePostMutation } = postsApi;
