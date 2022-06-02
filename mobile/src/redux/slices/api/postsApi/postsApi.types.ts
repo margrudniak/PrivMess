@@ -1,13 +1,16 @@
 export interface Post {
-  postId: number;
+  id: number;
   message: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-export interface GetPostResponse {}
+export interface GetPostResponse extends Array<Post> {}
 
 export interface GetPostRequest {
-  page: number;
-  size: number;
+  userId: number;
+  page?: number;
+  size?: number;
 }
 
 export interface CreatePostResponse {
