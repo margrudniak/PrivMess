@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Post, User } from '../models';
+import { Post, PostClass, User } from '../models';
 
 export const createPost = async (req: Request, res: Response) => {
   try {
@@ -35,13 +35,20 @@ export const removePost = async (req: Request, res: Response) => {
 export const getPosts = async (req: Request, res: Response) => {
   try {
     const posts = await Post.findAndCountAll({
+      attributes: { exclude: ["userId"] },
+      order: [
+        ['createdAt', 'DESC']
+      ],
+      where: {
+        userId: +req.query.userId,
+      },
       limit: Number(req.query.size),
       offset: Number(req.query.page) * Number(req.query.size)
     });
     if (!posts) {
       return res.status(404).send({ message: 'No posts.' });
     }
-    res.send(posts)
+    res.send(posts.rows)
   } catch (error) {
     console.error('ERROR getPosts: ', error);
     res.status(500).send({ message: error.message });
