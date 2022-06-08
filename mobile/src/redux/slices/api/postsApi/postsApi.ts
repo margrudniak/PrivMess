@@ -25,7 +25,7 @@ export const postsApi = createApi({
   endpoints(builder) {
     return {
       getPosts: builder.query<GetPostResponse, GetPostRequest>({
-        query: ({ userId, page = 0, size = 5 }) => ({
+        query: ({ userId, page = 0, size = 20 }) => ({
           url: `/posts?userId=${userId}&page=${page}&size=${size}`,
           method: 'GET'
         })
@@ -48,4 +48,4 @@ export const postsApi = createApi({
   }
 });
 
-export const { useGetPostsQuery, useCreatePostMutation, useRemovePostMutation } = postsApi;
+export const { useLazyGetPostsQuery, useCreatePostMutation, useRemovePostMutation } = postsApi;
