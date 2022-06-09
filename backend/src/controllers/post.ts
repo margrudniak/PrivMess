@@ -8,10 +8,19 @@ export const createPost = async (req: Request, res: Response) => {
       return res.status(404).send({ message: 'User Not found.' });
     }
     const post = await user.createPost({
-      message: req.body.message,
+      message: req.body.message
     });
+
+    //return Post without userId attribute
+    const returnedPost = await Post.findAll({
+      where: {
+        id: post.id
+      },
+      attributes: { exclude: ['userId'] }
+    });
+
     if (post) {
-      res.status(200).send({ message: 'Post created!' });
+      res.status(200).send(...returnedPost);
     }
   } catch (error) {
     console.error('ERROR createPost: ', error);
@@ -25,7 +34,9 @@ export const removePost = async (req: Request, res: Response) => {
     if (!user) {
       return res.status(404).send({ message: 'User Not found.' });
     }
-    await user.removePost(req.body.postId).then(() => res.status(200).send({ message: 'Post deleted!' }));
+    await user
+      .removePost(req.body.postId)
+      .then(() => res.status(200).send({ message: 'Post deleted!' }));
   } catch (error) {
     console.error('ERROR removePost: ', error);
     res.status(500).send({ message: error.message });
@@ -35,12 +46,10 @@ export const removePost = async (req: Request, res: Response) => {
 export const getPosts = async (req: Request, res: Response) => {
   try {
     const posts = await Post.findAndCountAll({
-      attributes: { exclude: ["userId"] },
-      order: [
-        ['createdAt', 'DESC']
-      ],
+      attributes: { exclude: ['userId'] },
+      order: [['createdAt', 'DESC']],
       where: {
-        userId: +req.query.userId,
+        userId: +req.query.userId
       },
       limit: Number(req.query.size),
       offset: Number(req.query.page) * Number(req.query.size)
@@ -48,7 +57,7 @@ export const getPosts = async (req: Request, res: Response) => {
     if (!posts) {
       return res.status(404).send({ message: 'No posts.' });
     }
-    res.send(posts.rows)
+    res.send(posts.rows);
   } catch (error) {
     console.error('ERROR getPosts: ', error);
     res.status(500).send({ message: error.message });
