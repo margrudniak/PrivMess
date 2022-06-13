@@ -2,6 +2,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { StatusBarStyle } from 'expo-status-bar';
 
 export interface ScreenProps {
+  isLoading: boolean;
   keyboardAware?: boolean;
   keyboardAwareScroll?: boolean;
   unsafeTop?: boolean;

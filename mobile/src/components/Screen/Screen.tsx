@@ -10,6 +10,7 @@ import {
   KeyboardAwareScrollScreenProps,
   ScreenProps
 } from './Screen.types';
+import { LoadingScreen } from './components/LoadingScreen/LoadingScreen';
 
 const BareScreen = ({ ...props }: BareScreenProps) => {
   return (
@@ -60,6 +61,7 @@ export const Screen = (props: ScreenProps) => {
 
   return (
     <>
+      <LoadingScreen loading={props.isLoading} />
       <StatusBar style={props.statusBar || 'light'} />
       {renderContent()}
     </>
