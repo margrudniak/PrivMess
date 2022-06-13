@@ -1,6 +1,8 @@
 import { StyleSheet, ViewStyle } from 'react-native';
+import { spacing } from 'src/themes';
 
 interface Style {
+  linearBackground: ViewStyle;
   mainWrapper: ViewStyle;
   topContainer: ViewStyle;
   middleContainer: ViewStyle;
@@ -8,28 +10,29 @@ interface Style {
 }
 
 const styles = StyleSheet.create<Style>({
+  linearBackground: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0
+  },
   mainWrapper: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    borderWidth: 3,
-    borderColor: 'red'
+    flex: 1
   },
   topContainer: {
     flex: 0.75,
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'blue'
+    alignItems: 'flex-end',
+    marginHorizontal: spacing[4]
   },
   middleContainer: {
-    flex: 10,
-    borderWidth: 1,
-    borderColor: 'red'
+    flex: 10
   },
   bottomContainer: {
-    // flex: 1.5,
-    borderWidth: 2,
-    justifyContent: 'flex-start',
-    borderColor: 'green'
+    flex: 1.5,
+    padding: spacing[2],
+    justifyContent: 'flex-start'
   }
 });
 
