@@ -17,7 +17,7 @@ export const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
         colors={[color.tertiary, color.tertiaryDarker]}
         style={styles.linearBackground}
       />
-      <Screen style={styles.mainWrapper}>
+      <Screen isLoading={false} style={styles.mainWrapper}>
         <Button category="primary" textCategory="h3" text={'auth.logIn'} onPress={onClickLogin} />
         <Button
           category="secondary"

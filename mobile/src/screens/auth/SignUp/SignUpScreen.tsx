@@ -84,7 +84,11 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
         colors={[color.tertiary, color.tertiaryDarker]}
         style={styles.linearBackground}
       />
-      <Screen keyboardAware style={styles.mainWrapper}>
+      <Screen
+        keyboardAware
+        isLoading={isLoadingSignUp || isLoadingSignIn}
+        style={styles.mainWrapper}
+      >
         <Header left="back" onPressLeft={onPressBack} style={styles.headerContainer} />
         <View style={styles.formWrapper}>
           <TextInput
