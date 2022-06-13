@@ -5,7 +5,10 @@ export const palette = {
   portica: '#F2F261',
   tundora: '#404040',
   mineShaft: '#202020',
-  mandy: '#E65151'
+  mandy: '#E65151',
+  stratos: '#00000040',
+  //others
+  blurred: '#F5FCFF88'
 };
 
 export type PaletteTypes = keyof typeof palette;
