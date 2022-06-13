@@ -5,7 +5,7 @@ export interface Post {
   updatedAt: Date;
 }
 
-export interface GetPostResponse extends Array<Post> {}
+export interface GetPostResponse extends Array<Post | CreatePostResponse> {}
 
 export interface GetPostRequest {
   userId: number;
@@ -14,7 +14,7 @@ export interface GetPostRequest {
 }
 
 export interface CreatePostResponse {
-  message: string;
+  data: Post;
 }
 
 export interface CreatePostRequest {

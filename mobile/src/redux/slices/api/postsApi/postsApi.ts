@@ -6,6 +6,7 @@ import {
   CreatePostResponse,
   GetPostRequest,
   GetPostResponse,
+  Post,
   RemovePostRequest,
   RemovePostResponse
 } from './postsApi.types';
@@ -25,12 +26,12 @@ export const postsApi = createApi({
   endpoints(builder) {
     return {
       getPosts: builder.query<GetPostResponse, GetPostRequest>({
-        query: ({ userId, page = 0, size = 20 }) => ({
+        query: ({ userId, page = 0, size = 10 }) => ({
           url: `/posts?userId=${userId}&page=${page}&size=${size}`,
           method: 'GET'
         })
       }),
-      createPost: builder.mutation<CreatePostResponse, CreatePostRequest>({
+      createPost: builder.mutation<Post, CreatePostRequest>({
         query: (credentials) => ({
           url: '/create',
           method: 'POST',
